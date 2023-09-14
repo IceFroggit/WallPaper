@@ -21,7 +21,7 @@ class HomePagingSource(
                 prevKey = null,
                 nextKey = responseHome.paggination?.next?.page,
             )
-        }catch (e:Exception){
+        }catch(e:Exception){
             LoadResult.Error(e)
         }
     }
