@@ -1,16 +1,31 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.WallPaper" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.WallPaper" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/main_background</item>
+        <item name="colorPrimaryVariant">@color/main_background</item>
+        <item name="colorOnPrimary">@color/main_background</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondary">@color/main_background</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/main_background</item>
+        <item name="fontFamily">@font/actor</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:textSize">10sp</item>
+        <item name="hideOnScroll">true</item>
+        <item name="android:windowContentTransitions">true</item>
+
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.WallPaper.NoActionbar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:textSize">10sp</item>
+        <item name="fontFamily">@font/actor</item>
+        <item name="hideOnScroll">true</item>
     </style>
 </resources>

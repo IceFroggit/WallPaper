@@ -30,7 +30,7 @@ class MainFragment : Fragment() {
         binding = FragmentMainBinding.inflate(layoutInflater, container, false)
         initViewPager()
         initTabLayout()
-      //  initToolBar()
+        initToolBar()
         return binding.root
     }
 
