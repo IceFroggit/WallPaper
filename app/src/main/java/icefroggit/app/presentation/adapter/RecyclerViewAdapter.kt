@@ -11,20 +11,21 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions
 import icefroggit.app.R
 import icefroggit.app.databinding.ItemRecyclerViewBinding
 import icefroggit.app.domain.model.Data
+import icefroggit.app.utils.BlurHashDecoder
 
 class RecyclerViewAdapter : PagingDataAdapter<Data, RecyclerViewAdapter.MyViewHolder>(DiffUtilCallBack()) {
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemRecyclerViewBinding.bind(view)
         fun bind(data: Data) {
+            val blurHashAsDrawable = BlurHashDecoder.blurHashBitmap(itemView.resources,data)
             Glide.with(itemView.context)
                 .asBitmap()
                 .load(data.smallImageUrl)
                 .centerCrop()
                 .transition(BitmapTransitionOptions.withCrossFade(80))
-                .error(R.drawable.error_photo)
+                .error(blurHashAsDrawable)
+                .placeholder(blurHashAsDrawable)
                 .into(binding.imageView)
-            //.placeholder()//todo make blurhash
-
         }
     }
 
