@@ -5,6 +5,10 @@
 
     >
 
+    <data>
+
+    </data>
+
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinator"
@@ -38,8 +42,10 @@
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    app:contentScrim="@color/white"
-                    app:navigationContentDescription="menu" />
+                    android:forceDarkAllowed="true"
+                    android:background="?attr/colorPrimary"
+                    app:contentScrim="?attr/colorPrimary"
+                    app:popupTheme="@color/main_background" />
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
 
@@ -56,9 +62,9 @@
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
-                android:background="@color/main_background"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/main_background"
                 android:fontFamily="@font/actor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

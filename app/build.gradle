@@ -62,5 +62,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     //paging 3
     implementation 'androidx.paging:paging-runtime:3.2.0-alpha03'
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.13.1'
+    implementation "io.trbl:blurhash:1.0.0"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.7.10"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
 }
