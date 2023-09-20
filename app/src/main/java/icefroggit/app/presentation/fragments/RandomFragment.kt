@@ -1,25 +1,33 @@
-package icefroggit.app.presentation.fragments
+package icefroggit.app.presentation .fragments
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import icefroggit.app.R
-import icefroggit.app.databinding.FragmentHomeBinding
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import icefroggit.app.databinding.FragmentRandomBinding
 import icefroggit.app.presentation.adapter.RecyclerViewAdapter
+import icefroggit.app.presentation.viewModels.RandomViewModel
+import icefroggit.app.utils.Constants
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
-class RandomFragment :  BaseFragment<FragmentRandomBinding>(
+class RandomFragment : BaseFragment<FragmentRandomBinding>(
     FragmentRandomBinding::inflate
 ) {
+    private val viewModel: RandomViewModel by viewModels()
     override fun initViewModel() {
-        TODO("Not yet implemented")
+        lifecycleScope.launch {
+            viewModel.randomPage.collectLatest {
+                recyclerViewAdapter.submitData(it)
+            }
+        }
     }
 
     override fun initRecyclerView() {
-        TODO("Not yet implemented")
+        val layoutManager = GridLayoutManager(context, 3)
+        binding.randomRecyclerView.layoutManager = layoutManager
+        binding.randomRecyclerView.adapter = recyclerViewAdapter
     }
-    override var recyclerViewAdapter: RecyclerViewAdapter = RecyclerViewAdapter()
+
+    override var recyclerViewAdapter: RecyclerViewAdapter = RecyclerViewAdapter(Constants.NavigationIntent.FromHomeToDownload)
 }

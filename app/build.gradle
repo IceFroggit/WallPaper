@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -67,5 +69,6 @@ dependencies {
     implementation "io.trbl:blurhash:1.0.0"
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.7.10"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
 
 }

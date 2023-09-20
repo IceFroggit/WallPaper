@@ -3,6 +3,7 @@ package icefroggit.app.presentation.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -11,13 +12,16 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions
 import icefroggit.app.R
 import icefroggit.app.databinding.ItemRecyclerViewBinding
 import icefroggit.app.domain.model.Data
+import icefroggit.app.presentation.fragments.MainFragmentDirections
 import icefroggit.app.utils.BlurHashDecoder
+import icefroggit.app.utils.Constants
 
-class RecyclerViewAdapter : PagingDataAdapter<Data, RecyclerViewAdapter.MyViewHolder>(DiffUtilCallBack()) {
+class RecyclerViewAdapter(private val navigationID: Int?) :
+    PagingDataAdapter<Data, RecyclerViewAdapter.MyViewHolder>(DiffUtilCallBack()) {
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemRecyclerViewBinding.bind(view)
         fun bind(data: Data) {
-            val blurHashAsDrawable = BlurHashDecoder.blurHashBitmap(itemView.resources,data)
+            val blurHashAsDrawable = BlurHashDecoder.blurHashBitmap(itemView.resources, data)
             Glide.with(itemView.context)
                 .asBitmap()
                 .load(data.smallImageUrl)
@@ -26,6 +30,21 @@ class RecyclerViewAdapter : PagingDataAdapter<Data, RecyclerViewAdapter.MyViewHo
                 .error(blurHashAsDrawable)
                 .placeholder(blurHashAsDrawable)
                 .into(binding.imageView)
+
+
+            itemView.setOnClickListener { v ->
+                                            //index 0                   index 1
+                val imageData = arrayOf(data.fullImageUrl.toString(), data.blurHash.toString())
+                when (navigationID) {
+                    Constants.NavigationIntent.FromHomeToDownload -> {
+                        Navigation.findNavController(v)
+                            .navigate(MainFragmentDirections.actionMainFragmentToDownloadFragment(
+                                imageData))
+                    }
+
+
+                }
+            }
         }
     }
 
@@ -39,7 +58,7 @@ class RecyclerViewAdapter : PagingDataAdapter<Data, RecyclerViewAdapter.MyViewHo
         return MyViewHolder(inflater)
     }
 
-    class DiffUtilCallBack : DiffUtil.ItemCallback<Data>(){
+    class DiffUtilCallBack : DiffUtil.ItemCallback<Data>() {
         override fun areItemsTheSame(oldItem: Data, newItem: Data): Boolean {
             return oldItem.blurHash == newItem.blurHash
         }

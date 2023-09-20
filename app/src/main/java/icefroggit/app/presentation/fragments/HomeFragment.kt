@@ -12,6 +12,7 @@ import icefroggit.app.R
 import icefroggit.app.databinding.FragmentHomeBinding
 import icefroggit.app.presentation.adapter.RecyclerViewAdapter
 import icefroggit.app.presentation.viewModels.HomeViewModel
+import icefroggit.app.utils.Constants
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -35,7 +36,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         binding.homeRecyclerView.adapter = recyclerViewAdapter
     }
 
-    override var recyclerViewAdapter: RecyclerViewAdapter = RecyclerViewAdapter()
+    override var recyclerViewAdapter: RecyclerViewAdapter = RecyclerViewAdapter(Constants.NavigationIntent.FromHomeToDownload)
 
 
 }

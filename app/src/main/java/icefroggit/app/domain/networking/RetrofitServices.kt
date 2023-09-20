@@ -12,7 +12,7 @@ interface RetrofitServices {
     suspend fun getPopularFromApi(@Query("page") page: Int?): Wallpaper
 
     @GET("latest")
-    suspend fun getLatestFromApi(@Query("page") page: Int?): Wallpaper
+    suspend fun getRandomFromApi(@Query("page") page: Int?): Wallpaper
 
     @GET("category")
     suspend fun getCategoryFromApi(
