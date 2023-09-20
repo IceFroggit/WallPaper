@@ -1,7 +1,14 @@
 package icefroggit.app.utils
 
+
 object Constants {
-    object NavigationIntent{
-        const val FromHomeToDownload = 1
+    const val HOME = "Home"
+    const val POPULAR = "Popular"
+    const val RANDOM = "Random"
+    const val CATEGORY_NAME = "Categories"
+
+    object BackGroundState {
+        const val lockScreen = 2
+        const val backGround = 1
     }
 }

@@ -3,7 +3,6 @@ package icefroggit.app.presentation.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -12,11 +11,11 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions
 import icefroggit.app.R
 import icefroggit.app.databinding.ItemRecyclerViewBinding
 import icefroggit.app.domain.model.Data
-import icefroggit.app.presentation.fragments.MainFragmentDirections
 import icefroggit.app.utils.BlurHashDecoder
-import icefroggit.app.utils.Constants
 
-class RecyclerViewAdapter(private val navigationID: Int?) :
+class RecyclerViewAdapter(
+    private val listener: WallInteractionListener,
+) :
     PagingDataAdapter<Data, RecyclerViewAdapter.MyViewHolder>(DiffUtilCallBack()) {
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemRecyclerViewBinding.bind(view)
@@ -32,18 +31,8 @@ class RecyclerViewAdapter(private val navigationID: Int?) :
                 .into(binding.imageView)
 
 
-            itemView.setOnClickListener { v ->
-                                            //index 0                   index 1
-                val imageData = arrayOf(data.fullImageUrl.toString(), data.blurHash.toString())
-                when (navigationID) {
-                    Constants.NavigationIntent.FromHomeToDownload -> {
-                        Navigation.findNavController(v)
-                            .navigate(MainFragmentDirections.actionMainFragmentToDownloadFragment(
-                                imageData))
-                    }
-
-
-                }
+            itemView.setOnClickListener {
+                listener.onCLickItem(data, itemView)
             }
         }
     }
