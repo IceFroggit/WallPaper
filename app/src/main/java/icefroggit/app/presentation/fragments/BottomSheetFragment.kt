@@ -54,7 +54,6 @@ class BottomSheetFragment(private val wallUrl: String) : BottomSheetDialogFragme
             }
             downloadManager.enqueue(request)
         } catch (e: Exception) {
-
         }
     }
 

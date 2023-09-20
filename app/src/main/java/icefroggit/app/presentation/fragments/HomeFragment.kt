@@ -1,16 +1,19 @@
 package icefroggit.app.presentation.fragments
 
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
+import androidx.paging.LoadState
+import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import icefroggit.app.databinding.FragmentHomeBinding
 import icefroggit.app.domain.model.Data
+import icefroggit.app.domain.paging.LoaderStateAdapter
 import icefroggit.app.presentation.adapter.RecyclerViewAdapter
 import icefroggit.app.presentation.adapter.WallInteractionListener
 import icefroggit.app.presentation.viewModels.HomeViewModel
-import icefroggit.app.utils.Constants
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -29,8 +32,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 
     override fun initRecyclerView() {
         val layoutManager = GridLayoutManager(context, 3)
-        binding.homeRecyclerView.layoutManager = layoutManager
-        binding.homeRecyclerView.adapter = recyclerViewAdapter
+        with(binding) {
+            wallRecyclerView.layoutManager = layoutManager
+            wallRecyclerView.adapter = recyclerViewAdapter.withLoadStateHeaderAndFooter(
+                header = LoaderStateAdapter{recyclerViewAdapter.retry()},
+                footer = LoaderStateAdapter{recyclerViewAdapter.retry()}
+            )
+            recyclerViewAdapter.addLoadStateListener { loadState ->
+                wallRecyclerView.isVisible = loadState.refresh is LoadState.NotLoading
+                progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+                buttonRetry.isVisible = loadState.source.refresh is LoadState.Error
+                handleError(loadState)
+            }
+            buttonRetry.setOnClickListener {
+                recyclerViewAdapter.retry()
+            }
+
+        }
+
     }
 
     override var recyclerViewAdapter: RecyclerViewAdapter =

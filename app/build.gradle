@@ -69,6 +69,9 @@ dependencies {
     implementation "io.trbl:blurhash:1.0.0"
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.7.10"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    //progress bar
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+    implementation 'com.flaviofaria:kenburnsview:1.0.7'
 
 
 }
