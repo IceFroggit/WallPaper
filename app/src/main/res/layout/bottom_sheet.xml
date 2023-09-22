@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="450dp"
+    android:theme="@style/Widget.Demo.BottomSheet"
+    android:layout_gravity="bottom"
+    android:background="@drawable/rounded"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bottom_sheets_menu"
+        tools:ignore="ContentDescription" />
+
+    <Button
+        android:id="@+id/downLoadFromNet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:background="@drawable/custom_button"
+        android:drawableLeft="@drawable/downloadsvg"
+        android:drawablePadding="@dimen/_70sdp"
+        android:elevation="@dimen/_10sdp"
+        android:gravity="left|center_vertical"
+        android:paddingStart="@dimen/_10sdp"
+        android:text="@string/download_image"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/setAsBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:background="@drawable/custom_button"
+        android:drawableLeft="@drawable/ic_baseline_wallpaper_24"
+        android:drawablePadding="@dimen/_55sdp"
+        android:elevation="@dimen/_10sdp"
+        android:gravity="left|center_vertical"
+        android:paddingStart="@dimen/_10sdp"
+        android:text="@string/set_as_background"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/setAsLockscreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:background="@drawable/custom_button"
+        android:drawableLeft="@drawable/ic_baseline_lock_open_24"
+        android:drawablePadding="@dimen/_55sdp"
+        android:elevation="@dimen/_10sdp"
+        android:gravity="left|center_vertical"
+        android:paddingStart="@dimen/_10sdp"
+        android:text="@string/set_as_lockscreen"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="italic" />
+
+
+</LinearLayout>
+
