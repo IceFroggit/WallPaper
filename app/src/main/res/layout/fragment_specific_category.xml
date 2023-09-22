@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/main_background">
+        android:background="?attr/colorPrimary">
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -29,7 +29,7 @@
             style="@style/SpinKitView.Large.Pulse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:SpinKit_Color="@color/background"
+            app:SpinKit_Color="?attr/colorSecondaryVariant"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
             android:id="@+id/CategoryButtonRetry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/whiteBlue"
+            android:backgroundTint="?attr/colorSecondaryVariant"
             android:fontFamily="@font/actor"
             android:text="@string/retry"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -55,7 +55,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginVertical="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginVertical="@dimen/_25sdp"
             android:gravity="left"
             android:fontFamily="@font/actor"
             android:textColor="@color/white"
