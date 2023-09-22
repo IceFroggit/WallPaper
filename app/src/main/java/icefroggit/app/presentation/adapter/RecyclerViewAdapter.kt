@@ -32,7 +32,7 @@ class RecyclerViewAdapter(
 
 
             itemView.setOnClickListener {
-                listener.onCLickItem(data, itemView)
+                listener.onClickItem(data, itemView)
             }
         }
     }

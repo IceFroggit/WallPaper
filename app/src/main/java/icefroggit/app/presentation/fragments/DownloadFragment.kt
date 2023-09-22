@@ -17,19 +17,14 @@ class DownloadFragment : Fragment() {
     private lateinit var binding: FragmentDownloadBinding
     private val args: DownloadFragmentArgs by navArgs()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentDownloadBinding.inflate(inflater)
+        binding = FragmentDownloadBinding.inflate(inflater,container,false)
         loadImage(args.imageData[0])
-        addCallBack()
         bottomSheet()
+        addCallBack()
         return binding.root
     }
 

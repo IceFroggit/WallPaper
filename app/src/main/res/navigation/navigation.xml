@@ -14,6 +14,12 @@
             android:id="@+id/action_mainFragment_to_downloadFragment"
             app:destination="@id/downloadFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_mainFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_specificCategoryFragment"
+            app:destination="@id/specificCategoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/downloadFragment"
@@ -22,5 +28,30 @@
         <argument
             android:name="imageData"
             app:argType="string[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="icefroggit.app.presentation.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/specificCategoryFragment"
+        android:name="icefroggit.app.presentation.fragments.SpecificCategoryFragment"
+        tools:layout="@layout/fragment_specific_category"
+        android:label="SpecificCategoryFragment" >
+        <action
+            android:id="@+id/action_specificCategoryFragment_to_downloadFragment"
+            app:destination="@id/downloadFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
     </fragment>
 </navigation>

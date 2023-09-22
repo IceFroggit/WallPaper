@@ -7,7 +7,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/main_background"
+        android:background="?attr/colorPrimary"
         tools:context=".ui.activities.MainActivity">
 
 
@@ -31,14 +31,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:SpinKit_Color="@color/background" />
+            app:SpinKit_Color="?attr/colorSecondaryVariant" />
 
 
         <Button
             android:id="@+id/buttonRetry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/whiteBlue"
+            android:backgroundTint="?attr/colorSecondaryVariant"
             android:text="@string/retry"
             android:fontFamily="@font/actor"
             app:layout_constraintBottom_toBottomOf="parent"

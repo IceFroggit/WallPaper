@@ -14,4 +14,9 @@
     <color name="gray">#A8A8A8</color>
     <color name="icon_background">#A100FF</color>
 
+    <color name="main_background_light">#7497cf</color>
+    <color name="background_light">#e6be91</color>
+    <color name="gray_light">#A8A8A8</color>
+    <color name="icon_background_light">#A100FF</color>
+
 </resources>

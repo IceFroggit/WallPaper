@@ -9,33 +9,38 @@ import icefroggit.app.R
 import icefroggit.app.databinding.CategoryItemRowBinding
 import icefroggit.app.domain.model.Category
 
-class CategoryAdapterRV(
-    private val categoryList: List<Category>,
-) : RecyclerView.Adapter<CategoryAdapterRV.CategoryViewHolder>() {
+class CategoryAdapter(
+    private val category: List<Category>,
+    private val listener: CategoryInteractionListener
+) :
+    RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+
+
     inner class CategoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = CategoryItemRowBinding.bind(view)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.category_item_row, parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.category_item_row, parent, false)
         return CategoryViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        val currentCategory = categoryList[position]
-        holder.binding.apply{
+        val currentCategory = category[position]
+        holder.binding.apply {
             categoryTextView.text = currentCategory.categoryName
+
             Glide.with(holder.itemView.context)
                 .load(currentCategory.imageUrl)
                 .centerCrop()
                 .error(R.color.teal_200)
                 .into(categoryImageView)
-
-
+        }
+        holder.itemView.setOnClickListener {
+            listener.onClickCategory(currentCategory, it)
         }
     }
 
-    override fun getItemCount() = categoryList.size
 
+    override fun getItemCount() = category.size
 }

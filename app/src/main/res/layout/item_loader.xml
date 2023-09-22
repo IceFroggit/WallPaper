@@ -26,7 +26,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:fontFamily="@font/actor"
-            android:backgroundTint="@color/whiteBlue"
+            android:backgroundTint="?attr/colorSecondaryVariant"
             android:text="@string/retry"
             android:visibility="visible" />
         <com.github.ybq.android.spinkit.SpinKitView
@@ -38,7 +38,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:SpinKit_Color="@color/background" />
+            app:SpinKit_Color="?attr/colorSecondaryVariant" />
 
 
     </LinearLayout>

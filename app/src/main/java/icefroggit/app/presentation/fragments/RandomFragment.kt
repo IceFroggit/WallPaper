@@ -51,7 +51,7 @@ class RandomFragment : BaseFragment<FragmentRandomBinding>(
     }
 
     override var recyclerViewAdapter: RecyclerViewAdapter = RecyclerViewAdapter(this)
-    override fun onCLickItem(data: Data, view: View) {
+    override fun onClickItem(data: Data, view: View) {
         val imageData = arrayOf(data.fullImageUrl.toString(), data.blurHash.toString())
         Navigation.findNavController(view)
             .navigate(MainFragmentDirections.actionMainFragmentToDownloadFragment(

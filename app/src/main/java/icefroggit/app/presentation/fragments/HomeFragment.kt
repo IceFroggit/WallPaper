@@ -6,7 +6,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.paging.LoadState
-import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import icefroggit.app.databinding.FragmentHomeBinding
 import icefroggit.app.domain.model.Data
@@ -35,8 +34,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         with(binding) {
             wallRecyclerView.layoutManager = layoutManager
             wallRecyclerView.adapter = recyclerViewAdapter.withLoadStateHeaderAndFooter(
-                header = LoaderStateAdapter{recyclerViewAdapter.retry()},
-                footer = LoaderStateAdapter{recyclerViewAdapter.retry()}
+                header = LoaderStateAdapter { recyclerViewAdapter.retry() },
+                footer = LoaderStateAdapter { recyclerViewAdapter.retry() }
             )
             recyclerViewAdapter.addLoadStateListener { loadState ->
                 wallRecyclerView.isVisible = loadState.refresh is LoadState.NotLoading
@@ -55,7 +54,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
     override var recyclerViewAdapter: RecyclerViewAdapter =
         RecyclerViewAdapter(this)
 
-    override fun onCLickItem(data: Data, view: View) {
+
+    override fun onClickItem(data: Data, view: View) {
         val imageData = arrayOf(data.fullImageUrl.toString(), data.blurHash.toString())
         Navigation.findNavController(view)
             .navigate(MainFragmentDirections.actionMainFragmentToDownloadFragment(

@@ -16,10 +16,7 @@ object ApiCategory {
             "Art",
             "https://images.unsplash.com/photo-1596644573908-7254b2e81456?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNTUzMjl8MHwxfHNlYXJjaHwyNTkxfHxBcnR8ZW58MHwxfHx8MTYzMjA2MzA2OA&ixlib=rb-1.2.1&q=80&w=400"
         ),
-        Category(
-            "Cars",
-            "https://images.pexels.com/photos/9584373/pexels-photo-9584373.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-        ),
+
         Category(
             "Black",
             "https://images.unsplash.com/photo-1602748152445-e24de6ea295d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNTUzMjl8MHwxfHNlYXJjaHwyNzgwfHxCbGFja3xlbnwwfDF8fHwxNjMxODgxMjU0&ixlib=rb-1.2.1&q=80&w=400"
@@ -33,25 +30,15 @@ object ApiCategory {
             "https://images.unsplash.com/photo-1619065402614-0e5569e78684?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNTUzMjl8MHwxfHNlYXJjaHwxNDEyfHxBbmltYWxzfGVufDB8MXx8fDE2MzE4ODExOTE&ixlib=rb-1.2.1&q=80&w=400"
         ),
         Category(
-            "Flowers",
-            "https://images.pexels.com/photos/5566973/pexels-photo-5566973.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-        ),
-        Category(
             "Fantasy",
             "https://images.unsplash.com/photo-1572883454114-1cf0031ede2a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNTUzMjl8MHwxfHNlYXJjaHwxNjE5fHxGYW50YXN5fGVufDB8MXx8fDE2MzE4ODE1MDk&ixlib=rb-1.2.1&q=80&w=400"
         ),
-        Category(
-            "Love",
-            "https://images.pexels.com/photos/916361/pexels-photo-916361.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-        ),
+
         Category(
             "3D",
             "https://images.unsplash.com/photo-1618151864004-0992c44d411f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNTUzMjl8MHwxfHNlYXJjaHw1MjV8fDNEfGVufDB8MXx8fDE2MzE4ODExNTg&ixlib=rb-1.2.1&q=80&w=400"
         ),
-        Category(
-            "Abstract",
-            "https://images.pexels.com/photos/921289/pexels-photo-921289.png?auto=compress&cs=tinysrgb&h=650&w=940"
-        ),
+
         Category(
             "Holidays",
             "https://images.unsplash.com/photo-1541953747-6bead12436c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNTUzMjl8MHwxfHNlYXJjaHwxMzV8fEhvbGlkYXlzfGVufDB8MXx8fDE2MzE2NDExMjY&ixlib=rb-1.2.1&q=80&w=400"
@@ -66,10 +53,7 @@ object ApiCategory {
             "Motorcycles",
             "https://images.unsplash.com/photo-1619262290574-914dc1158620?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNTUzMjl8MHwxfHNlYXJjaHwxNjV8fE1vdG9yY3ljbGVzfGVufDB8MXx8fDE2MzE2NDEyMjc&ixlib=rb-1.2.1&q=80&w=400"
         ),
-        Category(
-            "Music",
-            "https://images.pexels.com/photos/6804590/pexels-photo-6804590.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-        ),
+
         Category(
             "Nature",
             "https://images.unsplash.com/photo-1517079810336-d39e72287591?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNTUzMjl8MHwxfHNlYXJjaHwxMDQwfHxOYXR1cmV8ZW58MHwxfHx8MTYzMzgwMTYwNA&ixlib=rb-1.2.1&q=80&w=400"
@@ -81,10 +65,6 @@ object ApiCategory {
         Category(
             "Space",
             "https://images.unsplash.com/photo-1574545190184-d67b04202272?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNTUzMjl8MHwxfHNlYXJjaHwxNTc3fHxTcGFjZXxlbnwwfDF8fHwxNjMxODgyMTgx&ixlib=rb-1.2.1&q=80&w=400"
-        ),
-        Category(
-            "Sports",
-            "https://images.pexels.com/photos/5384586/pexels-photo-5384586.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
         ),
         Category(
             "Technology",

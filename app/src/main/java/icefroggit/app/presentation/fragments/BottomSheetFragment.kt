@@ -5,6 +5,7 @@ import android.app.WallpaperManager
 import android.content.Context
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.view.LayoutInflater
@@ -19,59 +20,83 @@ import icefroggit.app.utils.Constants
 import java.io.File
 import java.io.IOException
 
-class BottomSheetFragment(private val wallUrl: String) : BottomSheetDialogFragment() {
+class BottomSheetFragment(private val wallUrl :String) : BottomSheetDialogFragment() {
+
     private lateinit var binding: BottomSheetBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        binding = BottomSheetBinding.inflate(inflater)
+        savedInstanceState: Bundle?
+    ): View {
+        binding = BottomSheetBinding.inflate(inflater, container, false)
         initButtons()
         return binding.root
     }
 
     private fun initButtons() {
-        binding.downLoadFromNet.setOnClickListener { downloadImageFromNet(wallUrl) }
-        binding.setAsBackground.setOnClickListener { setAsBackground(Constants.BackGroundState.backGround) }
-        binding.setAsLockscreen.setOnClickListener { setAsBackground(Constants.BackGroundState.lockScreen) }
+
+
+        binding.downLoadFromNet.setOnClickListener {
+            downloadImageFromWeb(wallUrl)
+        }
+        binding.setAsBackground.setOnClickListener {
+            setAsBackground(Constants.BackGroundState.backGround)
+        }
+        binding.setAsLockscreen.setOnClickListener {
+            setAsBackground(Constants.BackGroundState.lockScreen)
+        }
     }
 
-    private fun downloadImageFromNet(url: String) {
+
+    private fun downloadImageFromWeb(url: String) {
         try {
-            Toast.makeText(context, "Downloading image", Toast.LENGTH_LONG).show()
             val downloadManager =
                 context?.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-            val imageUrl = Uri.parse(url)
-            val request = DownloadManager.Request(imageUrl).apply {
+
+            val downloadUri = Uri.parse(url)
+
+            val request = DownloadManager.Request(downloadUri).apply {
                 setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
                     .setMimeType("image/*")
                     .setAllowedOverRoaming(false)
                     .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                    .setTitle("wool")
-                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_PICTURES,
-                        File.separator + "wool" + ".jpg")
+                    .setTitle("wallpaper")
+                    .setDestinationInExternalPublicDir(
+                        Environment.DIRECTORY_PICTURES,
+                        File.separator + "wallpaper" + ".jpg",
+                    )
+
             }
             downloadManager.enqueue(request)
-        } catch (e: Exception) {
+            Toast.makeText(context, "Downloading...", Toast.LENGTH_LONG).show()
+
+        } catch (e: java.lang.Exception) {
+            Toast.makeText(context, "Image Download Failed ${e.message}", Toast.LENGTH_LONG).show()
+        }
+
+    }
+
+
+    private fun setAsBackground(LockOrBackGround: Int) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            try {
+                val wallpaperManager = WallpaperManager.getInstance(context)
+                val image = activity?.findViewById<ShapeableImageView>(R.id.download_image_view)
+
+                if (image?.drawable == null) {
+                    Toast.makeText(context, "Wait to loading", Toast.LENGTH_LONG).show()
+                } else {
+                    val bitmap = (image.drawable as BitmapDrawable).bitmap
+                    wallpaperManager.setBitmap(bitmap, null, true, LockOrBackGround)
+                    Toast.makeText(context, "DONE", Toast.LENGTH_LONG).show()
+                }
+
+            } catch (e: IOException) {
+                Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
+            }
         }
     }
 
-    private fun setAsBackground(LockOrBackground: Int) {
-        try {
-            val wallpaperManager = WallpaperManager.getInstance(context)
-            val image = activity?.findViewById<ShapeableImageView>(R.id.download_image_view)
-            if (LockOrBackground == Constants.BackGroundState.backGround)
-                Toast.makeText(context, "Wallpaper set as background", Toast.LENGTH_LONG).show()
-            else
-                Toast.makeText(context,"Wallpaper set as lockScreen",Toast.LENGTH_LONG).show()
-            if (image?.drawable != null) {
-                val bitmap = (image.drawable as BitmapDrawable).bitmap
-                wallpaperManager.setBitmap(bitmap, null, true, LockOrBackground)
-            } else {
-                Toast.makeText(context, "wait to download", Toast.LENGTH_LONG).show()
-            }
-        } catch (e: IOException) {
-        }
-    }
 }
